@@ -1,20 +1,23 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import * as Font from 'expo-font';
+import { AppLoading } from 'expo';
+
+import Meals from './navigation/Meals';
 
 export default function App() {
+  const [loaded, setLoaded] = useState(false);
+
+  if (!loaded) {
+    return (
+      <AppLoading
+        startAsync={() => Font.loadAsync({ 'cabin-sketch': require('./assets/CabinSketch-Regular.ttf') })}
+        onFinish={() => setLoaded(true)}
+        onError={console.warn}
+      />
+    );
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    <Text>Will it work?R</Text>
-    </View>
+    <Meals />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
