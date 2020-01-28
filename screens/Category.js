@@ -1,16 +1,19 @@
-import React from 'react';
-import { View, Text} from 'react-native';
+import React, { useMemo } from 'react';
+import { FlatList } from 'react-native';
 
-import { styles } from '../styles'
+import { CATEGORIES, MEALS } from "../dummy-data";
+import MealIem from "../components/MealItem";
 
-import { CATEGORIES } from "../dummy-data";
+function renderItem(data) {
+  return <MealIem meal={data.item}/>;
+}
 
-export default function Categories(props) {
+export default function Categories({ navigation }) {
+  const id = navigation.getParam('id');
+  const meals = useMemo(() => MEALS.filter(meal => meal.categoryIds.includes(id)), [MEALS, id]);
 
   return (
-    <View style={styles.screen}>
-      <Text>Category</Text>
-    </View>
+    <FlatList data={meals} renderItem={renderItem} />
   );
 };
 
