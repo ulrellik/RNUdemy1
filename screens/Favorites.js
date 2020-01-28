@@ -1,12 +1,10 @@
 import React from 'react';
-import { View, Text} from 'react-native';
 
-import { styles } from '../styles'
+import { MEALS } from "../dummy-data";
+import { MealList } from "../components/Meals";
 
-export default function Categories(props) {
+export default function Favorites() {
   return (
-    <View style={styles.screen}>
-      <Text>{this.displayName}</Text>
-    </View>
+    <MealList meals={MEALS} />
   );
 };
