@@ -5,7 +5,7 @@ import { styles } from '../styles'
 
 import { CATEGORIES } from "../dummy-data";
 
-export default function Categories({ navigation }) {
+export default function Categories(props) {
 
   return (
     <View style={styles.screen}>
