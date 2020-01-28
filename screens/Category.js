@@ -3,10 +3,20 @@ import { View, Text} from 'react-native';
 
 import { styles } from '../styles'
 
-export default function Categories(props) {
+import { CATEGORIES } from "../dummy-data";
+
+export default function Categories({ navigation }) {
+
   return (
     <View style={styles.screen}>
-      <Text>{this.displayName}</Text>
+      <Text>Category</Text>
     </View>
   );
+};
+
+Categories.navigationOptions = ({ navigation }) => {
+  const id = navigation.getParam('id');
+  return {
+    headerTitle: CATEGORIES.find(cat => cat.id === id).title,
+  };
 };

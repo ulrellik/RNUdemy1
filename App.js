@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
+import { enableScreens } from "react-native-screens";
 
 import Meals from './navigation/Meals';
+
+enableScreens();
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
