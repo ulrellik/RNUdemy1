@@ -2,9 +2,10 @@ import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from "react-navigation-tabs";
+import { createDrawerNavigator } from "react-navigation-drawer";
 import { Ionicons } from '@expo/vector-icons';
 
-import { Categories, Category, Details, Favorites } from '../screens';
+import { Categories, Category, Details, Favorites, Filters } from '../screens';
 import { Platform } from "react-native";
 import { colors } from "../styles";
 
@@ -26,6 +27,10 @@ const favoritesStack = createStackNavigator({
   Details,
 }, { defaultNavigationOptions });
 
+const filtersStack = createStackNavigator({
+  Filters,
+}, { defaultNavigationOptions });
+
 const bottomTabs = createBottomTabNavigator({
   Categories: {
     screen: categoriesStack,
@@ -45,4 +50,11 @@ const bottomTabs = createBottomTabNavigator({
   }
 });
 
-export default createAppContainer(bottomTabs);
+const drawer = createDrawerNavigator({
+  Home: bottomTabs,
+  Filters: filtersStack,
+}, {
+  contentOptions: { activeTintColor: colors.primary },
+});
+
+export default createAppContainer(drawer);

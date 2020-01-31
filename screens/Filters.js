@@ -1,12 +1,14 @@
 import React from 'react';
-import { View, Text} from 'react-native';
+import { Text} from 'react-native';
 
-import { styles } from '../styles'
+import { MenuButton } from "../navigation/HeaderButtons";
 
-export default function Categories(props) {
+export default function Filters(props) {
   return (
-    <View style={styles.screen}>
-      <Text>{this.displayName}</Text>
-    </View>
+    <Text>Filters</Text>
   );
 };
+
+Filters.navigationOptions = ({ navigation }) => ({
+  headerLeft: () => <MenuButton navigation={navigation} />,
+});

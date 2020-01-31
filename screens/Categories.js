@@ -2,6 +2,8 @@ import React, { useCallback } from 'react';
 import { Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 
 import { CATEGORIES } from "../dummy-data";
+import { MenuButton } from "../navigation/HeaderButtons";
+
 
 const styles = StyleSheet.create({
   box: {
@@ -41,3 +43,7 @@ export default function Categories({ navigation }) {
     <FlatList data={CATEGORIES} renderItem={renderItem} numColumns={2}/>
   );
 };
+
+Categories.navigationOptions = ({ navigation }) => ({
+  headerLeft: () => <MenuButton navigation={navigation} />,
+});
