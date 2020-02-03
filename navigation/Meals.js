@@ -29,6 +29,7 @@ const favoritesStack = createStackNavigator({
 
 const filtersStack = createStackNavigator({
   Filters,
+  Details,
 }, { defaultNavigationOptions });
 
 const bottomTabs = createBottomTabNavigator({
